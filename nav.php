@@ -1,7 +1,7 @@
  <header class="header">
             <a href="index.html" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                AdminLTE
+               <?php echo $U_Acc;?>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -87,7 +87,7 @@ FROM tbldns WHERE TIMESTAMPDIFF(MONTH, DateFrom , DateTo ) <= 1 ;");
                                     <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                                     <p>
                                         <?php echo $U_Acc; ?>
-                                        <small>Powered by 7Technology</small>
+                                        <small>Powered by <?php echo $title;?></small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -105,10 +105,10 @@ FROM tbldns WHERE TIMESTAMPDIFF(MONTH, DateFrom , DateTo ) <= 1 ;");
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="UserChangePassword.php" class="btn btn-default btn-flat">Change Password</a>
+                                        <a href="UserChangePassword.php" class="btn btn-default btn-flat"><?php echo $langChangePassword;?></a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="logout.php" class="btn btn-default btn-flat"><?php echo $langLogout;?></a>
                                     </div>
                                 </li>
                             </ul>

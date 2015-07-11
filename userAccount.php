@@ -14,7 +14,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        User Account
+                        <?php echo $langUserAccount;?>
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="row">
                     <a href="userAccount-new.php">
-					<button class="btn btn-primary" data-toggle="modal" data-target="#NewFloor"><i class="fa fa-file-o"></i> New User</button>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#NewFloor"><i class="glyphicon glyphicon-plus"></i></button>
                     </a>
                     
                     <form class="navbar-form" role="search">
@@ -66,12 +66,12 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>User Name</th>
-                                        <th>Level</th>
-                                        <th>Status</th>
-										<th>Description</th>
-										<th>Action</th>
+                                        <th><?php echo $langNo;?></th>
+                                        <th><?php echo $langUserName;?></th>
+                                        <th><?php echo $langLevel;?></th>
+                                        <th><?php echo $langStatus;?></th>
+										<th><?php echo $langDescription;?></th>
+										<th><?php echo $langAction;?></th>
                                     </tr>
                                    
                                 </thead>

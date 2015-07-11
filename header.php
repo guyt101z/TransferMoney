@@ -34,6 +34,110 @@
 	$datetomorow = date("Y-m-d" ,date(strtotime("+1 day", strtotime($date))));
 	/*$db->disconnect();
 	$db->connect();*/
+	$lang = $_SESSION['cboLanguage'];
+	if($lang == 'lkhmer')
+	{
+		$title = '៧តិចណូឡូជី';
+		$Transfer = 'សេវាកម្មផ្ញើ';
+		$Recieve = 'សេវាកម្មទទួល';
+		$Report = 'របាយការណ៍';
+		$Setting = 'ការកំណត់';
+		$langBranch = 'សាខា';
+		$langServiceType = 'ប្រភេទសេវាកម្ម';
+		$langCurrency = 'រូបបិយប័ណ្ណ';
+		$langUserAccount = 'គណនីអ្នកប្រើប្រាស់';
+		$langChangePassword = 'ប្តូរលេខសំងាត់';
+		$langLogout = 'ចាកចេញ';
+ /*------------- End Menu ---------------------------------*/
+ 		$langForm = 'អ្នកកំពុងឈរលើទំរង់';
+		$langSearch = 'ស្វែងរក';
+		$langGo = 'ទៅ';
+		$langChooseBranch = 'ជ្រើសរើសសាខា';
+		$langAmt = 'ចំនួន';
+		$langPhoneSender = 'លេខអ្នកផ្ញើ';
+		$langPhoneReciever = 'លេខអ្នកទទួល';
+		$langCode = 'លេខកូដ';
+		$langServiceFee = 'សេវាកម្មត្រូវបង';
+		$langTotalCharge = 'តំលៃបង់សេវាសរុប';
+		$langLocalCharg = 'តំលៃទទួលបាន';
+		$langAnnotherCharge = 'តំលៃសាខាផ្សេង';
+		$langPayChargeType = 'ប្រភេទនៃការបង់';
+		$langAllCharge = 'បង់ទាំងអស់';
+		$langLocalChargeOnly = 'បង់តែខ្លួនឯង';
+		$langNotAll = 'មិនគិតទាំងអស់';
+		$langInludeService = 'បូករួមសេវាកម្ម';
+		$langSave = 'រក្សាទុក';
+		$langMustEnter = 'ត្រូវតែបញ្ចូល';
+/*----------- frm Setting --------------------------------------*/
+		$langNo = 'ល.រ';
+		$langBranchName = 'ឈ្មោះសាខា';
+		$langDescription = 'ពិព័ណនា';
+		$ServiceTypeName = 'ប្រភេទអាជីវកម្ម';
+		$langCurrencyName = 'ឈ្មោះរូបបិយប័ណ្ណ';
+		$langAction = 'សកម្ម';
+		$langServiceType = 'ប្រភេទសេវាកម្ម';
+		$langDate = 'ការបរិច្ឆេទ';
+		$langTotal = 'សរុប';
+		$langLocalBranch = 'សាខាខ្លួនឯង';
+		$langAnotherBranch = 'សាខាផ្សេង';
+		$langUpdate = 'កែ';
+		$langUserName = 'ឈ្មោះអ្នកប្រើ';
+		$langLevel = 'កំរិតអ្នកប្រើប្រាស់';
+		$langStatus = 'ស្ថានភាព';
+		$langPassword = 'លេខសំងាត់';
+
+	}
+	else if($lang == 'leng')
+	{
+		$title = '7Technology';
+		$Transfer = 'Transfer';
+		$Recieve = 'Recieve';
+		$Report = 'Report';
+		$Setting = 'Setting';
+		$langBranch = 'Branch';
+		$langServiceType = 'Service Type';
+		$langCurrency = 'Currency';
+		$langUserAccount = 'User Account';
+		$langChangePassword = 'Change Password';
+		$langLogout = 'Logout';
+ /*------------- End Menu ---------------------------------*/
+		$langForm = 'You are staying in';
+		$langSearch = 'Search';
+		$langGo = 'Go';
+		$langChooseBranch = 'Choose Branch';
+		$langAmt = 'AMT';
+		$langPhoneSender = 'Phone Sender';
+		$langPhoneReciever = 'Phone Reciever';
+		$langCode = 'Code';
+		$langServiceFee = 'Service Fee';
+		$langTotalCharge = 'Total Charge';
+		$langLocalCharg = 'Local Charge';
+		$langAnnotherCharge = 'Annother Charge';
+		$langPayChargeType = 'Pay Charge Type';
+		$langAllCharge = 'All Charge';
+		$langLocalChargeOnly = 'Local Charge Only';
+		$langNotAll = 'Not All';
+		$langInludeService = 'Include Service';
+		$langSave = 'Save';
+/*----------- frm Setting --------------------------------------*/
+		$langNo = 'No';
+		$langBranchName = 'Branch Name';
+		$langDescription = 'Description';
+		$ServiceTypeName = 'Service Type Name';
+		$langCurrencyName = 'Currency Name';
+		$langAction = 'Action';
+		$langServiceType = 'Service Type';
+		$langDate = 'Date';
+		$langTotal = 'Total';
+		$langLocalBranch = 'Local Branch';
+		$langAnotherBranch = 'Another Branch';
+		$langUpdate = 'Update';
+		$langUserName = 'User Name';
+		$langLevel = 'Level';
+		$langStatus = 'Status';
+		$langPassword = 'Password';
+		
+	}
 	
 	
 ?>
@@ -41,7 +145,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title><?php echo $date_now; ?></title>
+        <title><?php echo $title; ?></title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!--<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />-->

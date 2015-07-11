@@ -117,12 +117,12 @@
                           <input type="hidden" name="txtBranchID" id="ServiceID">
                           
                           <div class="form-group">
-                            	<label>Branch Name: </label>
+                            	<label><?php echo $langBranchName;?> :</label>
                                 <input name="txtBranchName" class="form-control"  id="txtServiceName" placeholder="Enter text" required autofocus />
                           </div>
                           
                           <div class="form-group">
-                            	<label>Description: </label>
+                            	<label><?php echo $langDescription;?> : </label>
                                 <textarea class="form-control" id="txtDescUpdate" name="txtDesc" placeholder="Enter Descriptiion" rows="3"></textarea>
                           </div>
                      
@@ -144,11 +144,10 @@
                                    	
                                     <thead>
                                         <tr>
-                                        	<th>No</th>
-                                            <th>Branch Name</th>
-                                            <th>Description</th>
-                                             <th>Action</th> 
-                                          
+                                        	<th><?php echo $langNo; ?></th>
+                                            <th><?php echo $langBranchName;?></th>
+                                            <th><?php echo $langDescription;?> </th>
+                                            <th><?php echo $langAction;?></th> 
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -207,11 +206,11 @@
                       <div class="modal-body">
                         <form role="form" method="post" >
                            <div class="form-group">
-                            	<label>Branch Name: </label>
+                            	<label><?php echo $langBranchName;?> : </label>
                                 <input name="txtBranchName" class="form-control" placeholder="Enter text" required autofocus />
                           </div>
                           <div class="form-group">
-                            	<label>Description: </label>
+                            	<label><?php echo $langDescription;?> : </label>
                                 <textarea class="form-control" name="txtDescription" placeholder="Enter Descriptiion" rows="3"></textarea>
                           </div>
                           

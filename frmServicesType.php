@@ -67,7 +67,7 @@
                     
                    
                 </section>
-
+			
                 <!-- Main content -->
           <div class="modal fade bs-example-modal-sm" tabindex="0" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -82,12 +82,12 @@
                           <input type="hidden" name="txtServiceTypeID" id="ServiceID">
                           
                           <div class="form-group">
-                            	<label>Service Type Name: </label>
+                            	<label><?php echo $ServiceTypeName;?> : </label>
                                 <input name="txtservicename" class="form-control"  id="txtServiceName" placeholder="Enter text" required autofocus />
                           </div>
                           
                           <div class="form-group">
-                            	<label>Description: </label>
+                            	<label><?php echo $langDescription;?> : </label>
                                 <textarea class="form-control" id="txtDescUpdate" name="txtDesc" placeholder="Enter Descriptiion" rows="3"></textarea>
                           </div>
                      
@@ -109,10 +109,10 @@
                                    	
                                     <thead>
                                         <tr>
-                                        	<th>No</th>
-                                            <th>Service Type Name</th>
-                                            <th>Description</th>
-                                             <th>Action</th> 
+                                        	<th><?php echo $langNo; ?></th>
+                                            <th><?php echo $ServiceTypeName;?></th>
+                                            <th><?php echo $langDescription;?></th>
+                                             <th><?php echo $langAction;?></th> 
                                           
                                         </tr>
                                     </thead>
@@ -172,11 +172,11 @@
                       <div class="modal-body">
                         <form enctype="multipart/form-data" >
                            <div class="form-group">
-                            	<label>Service Type Name: </label>
+                            	<label><?php echo $ServiceTypeName;?> : </label>
                                 <input name="txtservicename" class="form-control"  id="txtPrdName" placeholder="Enter text" required autofocus />
                           </div>
                           <div class="form-group">
-                            	<label>Description: </label>
+                            	<label><?php echo $langDescription;?> : </label>
                                 <textarea class="form-control" id="txtDescSale" name="txtDesc" placeholder="Enter Descriptiion" rows="3"></textarea>
                           </div>
                           

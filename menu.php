@@ -7,9 +7,8 @@
                             <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Hello, <?php  echo $U_Acc; ?></p>
+                            <p><?php  echo $langBranch.' : '. $_SESSION['BranchName'];?></p>
 
-                            <a href="#"><i class="fa fa-circle text-success"></i>Branch: <?php echo $_SESSION['BranchName']; ?></a>
                         </div>
                     </div>
                     <!-- search form -->
@@ -30,19 +29,19 @@
 						if($_SESSION['Level']=='1'){
 							echo '<li >
 								   <a href="frmTransfer.php">
-										<span>Transfer</span>	
+										<span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$Transfer.'</span>	
 								   </a>
 											
 								</li>
 								<li >
 								   <a href="frmReciever.php">
-										<span>Recieve</span>	
+										<span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$Recieve.'</span>	
 								   </a>
 											
 								</li>
 								<li >
 								   <a href="frmReport.php">
-										<span>Report</span>	
+										<span> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$Report.'</span>	
 								   </a>
 											
 								</li>
@@ -59,13 +58,13 @@
 										</ul>
 									</li>';*/
 							echo'<li class="treeview">
-								<a > <span>Setting</span>
+								<a > <span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$Setting.'</span>
 								<i class="fa fa-angle-left pull-right"></i>
 								</a>
 										<ul class="treeview-menu">
-											<li><a href="frmbranch.php">Branch</a></li>
-											<li><a href="frmServicesType.php">Service Type</a></li>
-											<li><a href="frmcurrency.php">Currency</a></li>
+											<li><a href="frmbranch.php"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$langBranch.'</a></li>
+											<li><a href="frmServicesType.php"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$langServiceType.'</a></li>
+											<li><a href="frmcurrency.php"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$langCurrency.'</a></li>
 											
 										</ul>
 							</li>';
@@ -73,13 +72,13 @@
 							
 								echo '<li class="treeview">
 										<a href="userAccount.php">
-										    <span>User Account</span>
+										    <span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$langUserAccount.'</span>
 											<i class="fa fa-angle-left pull-right"></i>
 										</a>
 												<ul class="treeview-menu">
-													<li><a href="userAccount.php">User Account </a></li>
-													<li><a href="UserChangePassword.php">Change Password</a></li>
-													<li><a href="logout.php">Logout</a></li>
+													<li><a href="userAccount.php"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$langUserAccount.' </a></li>
+													<li><a href="UserChangePassword.php"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$langChangePassword.'</a></li>
+													<li><a href="logout.php"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> '.$langLogout.'</a></li>
 												</ul>
 									</li>';	
 									

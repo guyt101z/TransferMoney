@@ -11,6 +11,7 @@ if(isset($_POST['btnsave'])){
 
 	$txtusername = $_POST['txtusername'];
 	$password = $_POST['txtpassword'];
+	$cboLanguage = post('cboLanguage');
 	
 	$encrypted_txt = encrypt_decrypt('encrypt', $password);
 	
@@ -25,7 +26,7 @@ if(isset($_POST['btnsave'])){
 		
 		$Level=$row->UserLever;
 		$BranchID=$row->BranchID;
-		$BranchName=$row->BranchName;
+		$BranchName = $row->BranchName;
 		
 		$_SESSION['UserID']= $UserID;
 		
@@ -34,23 +35,24 @@ if(isset($_POST['btnsave'])){
 		$_SESSION['BranchID'] = $BranchID;
 		$_SESSION['BranchName'] = $BranchName;
 		$_SESSION['startDate'] = date("Y-m-d H:i:s");
+		$_SESSION['cboLanguage'] = $cboLanguage;
 		
 		if($Level == 2)
 		{
 			cRedirect('frmTransfer.php');
-			
 		}
 		else if ($Level == 1)
 		{
-			
 			cRedirect('frmTransfer.php');
 		}
 	}
 	else
 	{
-		$error="<center><strong style='color:red;'><blink>Incorrect Username or Password !</blink></strong></center>";
+		$db->disconnect();
+		echo '<script language="javascript">alert(\'លេខកូន និងឈ្មោះមិនត្រឹមត្រូវ!\')</script>';
+		// $error="<center><strong style='color:red;'><blink>Incorrect Username or Password !</blink></strong></center>";
 	}
-	
+	$error="<center><strong style='color:red;'><blink>Incorrect Username or Password !</blink></strong></center>";
 }
 ?>
 <!DOCTYPE html>
@@ -96,7 +98,9 @@ if(isset($_POST['btnsave'])){
                         <input name="txtpassword" type="password" class="form-control" placeholder="Password"/>
                     </div>          
                     <div class="form-group"> 
-                        <input type="checkbox" name="remember_me"/> Remember me <?php echo $error; ?>
+                        <input type="radio" name="cboLanguage"​ value="lkhmer" checked /> ខ្មែរ <input type="radio" value="leng" name="cboLanguage"/> អង់គ្លេស
+						
+						<?php echo $error; ?>
                     </div>
                     <div class="form-group">
                          <input class="btn btn-lg btn-primary btn-block" placeholder="Password" name="btnsave" type="submit" value="Login">
@@ -109,5 +113,5 @@ if(isset($_POST['btnsave'])){
         </div>
 
     <?php include 'footer.php';
-	$db->disconnect();
+	
 	?>

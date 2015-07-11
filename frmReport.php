@@ -147,16 +147,16 @@
                                    	   
                                      <thead>
                                         <tr>
-                                        	<th>No</th>
-                                        	<th>ServiceType</th>
-                                            <th>Date</th>
-                                            <th>Currency</th>
-                                            <th>ATM</th>
-                                            <th>Total Charge</th>
-                                            <th>Type's Charge</th>
-                                            <th>Local Charge</th> 
-                                            <th>Another Charge</th>
-                                            <th>Total</th>
+                                        	<th><?php echo $langNo;?></th>
+                                        	<th><?php echo $langServiceType;?></th>
+                                            <th><?php echo $langDate; ?></th>
+                                            <th><?php echo $langCurrency;?></th>
+                                            <th><?php echo $langAmt;?></th>
+                                            <th><?php echo $langTotalCharge;?></th>
+                                            <th><?php echo $langPayChargeType;?></th>
+                                            <th><?php echo $langLocalChargeOnly;?></th> 
+                                            <th><?php echo $langAnnotherCharge;?></th>
+                                            <th><?php echo $langTotal;?></th>
                                             <th><!--<input type="checkbox" name="checkme">-->
                                             
                                             	
@@ -225,7 +225,7 @@
 											else
 											{
 												echo '<tr class="even">
-														<td  colspan="10"><font size="+1" color="#CC0000"> No Products Selected.</font></td>
+														<td  colspan="11"><font size="+1" color="#CC0000"> No Products Selected.</font></td>
 														</td>
 													</tr>';	
 											}

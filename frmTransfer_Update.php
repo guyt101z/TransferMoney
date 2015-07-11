@@ -34,17 +34,59 @@
 		$check3	=	get('check3');
 		$txtAnnotherCharge	=	get('txtAnnotherCharge');
 		$btnSave	=	get('btnSave');
+		$getcboincludeservice = get('cboincludeservice');
 		
-		$ifall = floatval($txtamt) - floatval($txtAnnotherCharge);
-		$ifLocalCharge = floatval($txtamt);
+		$ifallnotinclude = floatval($txtamt) + floatval($txtAnnotherCharge);
+		$ifallinclude = floatval($txtamt);
+		
+		$ifLocalChargenotinclude = floatval($txtamt) + floatval($txtAnnotherCharge);
+		$ifLocalChargeinclude = floatval($txtamt);
+		
 		$ifNotall = floatval($txtamt) + floatval($txtLocalCharge);
+		
 		
 		if($btnSave== "Save"){
 			
 					
 			if($cboPayChargeType=="AllCharge")
 			{
-				$update=$db->query("UPDATE tbltransaction SET 
+				if($getcboincludeservice == ""){
+					$update=$db->query("UPDATE tbltransaction SET 
+						Another_BranchID = '".$cboToBranch."', 
+						PhoneSender= '".$txtPhoneSender."',
+						PhoneReceiver= '".$txtPhoneReciever."',
+						`Code`= '".$txtcode."',
+						CurrencyNo= '".$cboCurrency."',
+						Amt= '".$txtamt."',
+						Local_Branch_Charge= '".$txtLocalCharge."', 
+						Another_Branch_Charge= '".$txtAnnotherCharge."', 
+						TotalCharge= '".$txtTotalCharge."',
+						PayChargeType= '".$cboPayChargeType."',
+						Total_To_Paid= '".$ifallnotinclude."'
+						WHERE TransactionID = '".$txtTransactionID."'");
+				}
+				else
+				{
+						$update=$db->query("UPDATE tbltransaction SET 
+						Another_BranchID = '".$cboToBranch."', 
+						PhoneSender= '".$txtPhoneSender."',
+						PhoneReceiver= '".$txtPhoneReciever."',
+						`Code`= '".$txtcode."',
+						CurrencyNo= '".$cboCurrency."',
+						Amt= '".$txtamt."',
+						Local_Branch_Charge= '".$txtLocalCharge."', 
+						Another_Branch_Charge= '".$txtAnnotherCharge."', 
+						TotalCharge= '".$txtTotalCharge."',
+						PayChargeType= '".$cboPayChargeType."',
+						Total_To_Paid= '".$ifallinclude."'
+						WHERE TransactionID = '".$txtTransactionID."'");
+
+				}
+			}
+			else if ($cboPayChargeType=="LocalChargeOnly")
+			{
+				if($getcboincludeservice == ""){
+					$update=$db->query("UPDATE tbltransaction SET 
 					Another_BranchID = '".$cboToBranch."', 
 					PhoneSender= '".$txtPhoneSender."',
 					PhoneReceiver= '".$txtPhoneReciever."',
@@ -55,12 +97,12 @@
 					Another_Branch_Charge= '".$txtAnnotherCharge."', 
 					TotalCharge= '".$txtTotalCharge."',
 					PayChargeType= '".$cboPayChargeType."',
-					Total_To_Paid= '".$ifall."'
+					Total_To_Paid= '".$ifLocalChargenotinclude."'
 					WHERE TransactionID = '".$txtTransactionID."'");
-			}
-			else if ($cboPayChargeType=="LocalChargeOnly")
-			{
-				$update=$db->query("UPDATE tbltransaction SET 
+				}
+				else
+				{
+					$update=$db->query("UPDATE tbltransaction SET 
 					Another_BranchID = '".$cboToBranch."', 
 					PhoneSender= '".$txtPhoneSender."',
 					PhoneReceiver= '".$txtPhoneReciever."',
@@ -73,6 +115,7 @@
 					PayChargeType= '".$cboPayChargeType."',
 					Total_To_Paid= '".$ifLocalCharge."'
 					WHERE TransactionID = '".$txtTransactionID."'");
+				}
 			}
 			else if($cboPayChargeType=="NotAll")
 			{
@@ -87,7 +130,7 @@
 					Another_Branch_Charge= '".$txtAnnotherCharge."', 
 					TotalCharge= '".$txtTotalCharge."',
 					PayChargeType= '".$cboPayChargeType."',
-					Total_To_Paid= ".$ifNotall."
+					Total_To_Paid= ".$ifLocalChargeinclude."
 					WHERE TransactionID = '".$txtTransactionID."'");
 			}
 					
@@ -122,18 +165,13 @@
                             
                             <div class="col-md-4 pull-left">
                             	<font size="2">
-                               	You are staying in Form Transfer Update.
+                               	<?php echo $langForm.$Transfer.$langUpdate;?>
                                 </font>
                             </div>
                             
                            <div class="col-md-3 pull-right">
                                 <form  role="search" >
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search" value="<?php echo $txtSearch; ?>" name="sarchprd" >
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                        </div>
-                                    </div>
+                                   
                                </form>
                             </div>
                             &nbsp;
@@ -191,7 +229,7 @@
                                    	<form enctype="multipart/form-data">
                                    		<tr>
                                             <th class="">
-                                            	<div class="input-group-addon">To Branch</div>
+                                            	<div class="input-group-addon"><?php echo $langChooseBranch;?></div>
                                                 <input type="hidden" name="txtTransactionID" value="<?php echo $getTransactionID; ?>" >
                                             	<select class="form-control" name="cboToBranch">
                                    					<?php
@@ -213,13 +251,13 @@
                                                    ?>
                                                    
                                                     </select>
-                                                    <div class="input-group-addon">Phone Sender</div>
+                                                    <div class="input-group-addon"><?php echo $langPhoneSender;?></div>
                                             	<input type="text" name="txtPhoneSender" value="<?php echo $PhoneSender; ?>" placeholder="Tel Sender" id="" class="form-control currency"  />
                                                     
                                             </th>
                                             
                                             <th>
-                                            	<div class="input-group-addon">Currency($)</div>
+                                            	<div class="input-group-addon"><?php echo $langCurrency;?></div>
                                             	<select class="form-control" name="cboCurrency">
                                    					<?php
                                                         $select=$db->query("SELECT CurrencyNo, `Name` as CurrencyName FROM `tblcurrency`;");
@@ -239,13 +277,13 @@
                                                         }
                                                    ?>
                                                     </select>
-                                                    <div class="input-group-addon">Phone Reciever</div>
+                                                    <div class="input-group-addon"><?php echo $langPhoneReciever;?></div>
                                             	<input name="txtPhoneReciever" value="<?php echo $PhoneReceiver;?>" tabindex="0"  class="form-control" placeholder="Tel Reciever" required autofocus />
                                              </th>
                                              <th>
-                                            <div class="input-group-addon">Amt</div>
+                                            <div class="input-group-addon"><?php echo $langAmt;?></div>
                                             <input type="text" name="txtamt" placeholder="Ammount" value="<?php echo $getAmt; ?>" id="idAmt" onKeyUp="EnterAmmount()"  onKeyPress="return isNumberKey(event)" required class="form-control currency"  />
-                                            <div class="input-group-addon">Code</div>
+                                            <div class="input-group-addon"><?php echo $langCode;?></div>
                                             <input type="text" name="txtcode" placeholder="Input Code" value="<?php echo $getCode;?>"   class="form-control currency"  />
                                             
                                             </th>
@@ -253,33 +291,33 @@
                                         </tr>
                                         <tr>
                                             <th colspan="5" class="info">
-                                            	Service Fee
+                                            	<?php echo $langServiceFee;?>
                                             </th>
                                             
                                         </tr>
                                         <tr>
                                             <th class="">
-                                            	<div class="input-group-addon">Total Charge</div>
+                                            	<div class="input-group-addon"><?php echo $langTotalCharge;?></div>
                                             	<input type="text" name="txtTotalCharge" placeholder="Total Charge" value="<?php echo $getTotalCharge;?>" id="idTotalCharge" onKeyUp="EnterTotalCharge()" onKeyPress="return isNumberKey(event)" required class="form-control currency"  />
                                                 <div class="input-group-addon">Pay Charge Type</div>
                                             	<select class="form-control" name="cboPayChargeType" id="idChargeServiceType" onChange="myChargeServiceType()">
-                                   					<option value="AllCharge" <?php if($getPayChargeType=="AllCharge") echo 'selected'; ?>>All Charge</option>
-                                                    <option value="LocalChargeOnly"  <?php if($getPayChargeType=="LocalChargeOnly") echo 'selected'; ?>>Local Charge Only</option>
-                                                    <option value="NotAll" <?php if($getPayChargeType=="NotAll") echo 'selected'; ?>>No All</option>
+                                   					<option value="AllCharge" <?php if($getPayChargeType=="AllCharge") echo 'selected'; ?>><?php echo $langAllCharge;?></option>
+                                                    <option value="LocalChargeOnly"  <?php if($getPayChargeType=="LocalChargeOnly") echo 'selected'; ?>><?php echo $langLocalChargeOnly;?></option>
+                                                    <option value="NotAll" <?php if($getPayChargeType=="NotAll") echo 'selected'; ?>><?php echo $langNotAll;?></option>
                                                 </select>  
                                             </th>
                                             
                                             <th>
-                                            	<div class="input-group-addon">Local Charge</div> 
+                                            	<div class="input-group-addon"><?php echo $langLocalCharg;?></div> 
                                             	
                                                 <input type="text" name="txtLocalCharge" placeholder="Total Charge" value="<?php echo $getTotalCharge;?>" id="idlocalcharge" onKeyUp="Enterlocalcharge()" onKeyPress="return isNumberKey(event)" required class="form-control currency"  />
                                                 <div class="input-group-addon"> &nbsp;</div>
                                                <select class="form-control" id="mySelect" name="cboincludeservice" onChange="myFunction()">														  													<option value=""></option>
-                                                  	<option value="include_service">Include Service</option>
+                                                  	<option value="include_service"><?php echo $langInludeService;?></option>
                                                 </select>     
                                              </th>
                                              <th>
-                                            <div class="input-group-addon">Annother Charge</div>
+                                            <div class="input-group-addon"><?php echo $langAnnotherCharge;?></div>
                                             <input type="text" name="txtAnnotherCharge" value="<?php echo $getAnother_Branch_Charge;?>" placeholder="Another Charge" id="idanothercharge" onKeyUp="EnterAnotherCharge()" readonly  onKeyPress="return isNumberKey(event)" required class="form-control currency"  />
                                           
                                             <div class="input-group-addon"> &nbsp;</div>

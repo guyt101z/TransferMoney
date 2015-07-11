@@ -1,4 +1,4 @@
-<?php include 'header.php';
+﻿<?php include 'header.php';
 
 //==================== Insert New User =======================
 if(isset($_POST['btnSave'])){
@@ -42,7 +42,7 @@ if(isset($_POST['btnSave'])){
                     <form role="form" method="post" enctype="multipart/form-data">
                           
 							<div class="form-group">
-										<label>Choose Branch</label>
+										<label><?php echo $langChooseBranch;?></label>
 										<select class="form-control" name="cboBranch">
 										   
 										<?php
@@ -62,48 +62,48 @@ if(isset($_POST['btnSave'])){
 										</select>
 										
 										<div class="form-group">
-                                            <label>User Name</label>
+                                            <label><?php echo $langUserName;?></label>
                                             <input name="txtUserName" class="form-control" placeholder="User Name" />
 										</div>
 										<div class="form-group">
-                                            <label>Password</label>
+                                            <label><?php echo $langPassword;?></label>
                                             <input required name="txtPassword" type="password" class="form-control" placeholder="Password" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Level</label>
+                                            <label><?php echo $langLevel;?></label>
                                            
                                              <div class="radio">
                                               <label>
                                                 <input type="radio" name="txtLevel" id="optionsRadios1" value="1" checked>
-                                                Admin
+                                                Admin(មេ(អ្នកកំនត់សិទ្ធទូទៅ))
                                               </label>
                                             </div>
                                             <div class="radio">
                                               <label>
                                                 <input type="radio" name="txtLevel" id="optionsRadios2" value="2">
-                                                User
+                                                User(អ្នកប្រើប្រាស់)
                                               </label>
                                             </div>
                                            
                                             
                                         </div>
                                         <div class="form-group">
-                                            <label>Description</label>
+                                            <label><?php echo $langDescription;?></label>
                                             <textarea class="form-control" name="txtDescription" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label>Status</label>
+                                            <label><?php echo $langStatus;?></label>
                                            
                                              <div class="radio">
                                               <label>
                                                 <input type="radio" name="txtStatus" id="optionsRadios1" value="1" checked>
-                                                Active
+                                                Active(អនុញ្ញាត)
                                               </label>
                                             </div>
                                             <div class="radio">
                                               <label>
                                                 <input type="radio" name="txtStatus" id="optionsRadios2" value="0">
-                                                Suspend
+                                                Suspend(មិនអនុញ្ញាត)
                                               </label>
                                             </div>
                                            

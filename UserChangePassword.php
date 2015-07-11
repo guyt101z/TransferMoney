@@ -57,14 +57,14 @@ if(isset($_POST['btnSave'])){
                    <div class="col-xs-8">
                     <form role="form" method="post" enctype="multipart/form-data">
                           
-							<strong>Your Name </strong>
+							<strong><?php echo $langUserName;?> </strong>
 							<div class="input-group">
 							  <span class="input-group-addon"><span class="fa fa-user fa-fw"></span></span>
 							  <input type="text" name="txtUser" value="<?php echo $U_Acc; ?>" class="form-control" placeholder="Username">
 							</div>
 							
 							<div style="height:10px; width:auto"></div>
-							<strong>Your Password </strong>
+							<strong><?php echo $langPassword;?> </strong>
 							<div class="input-group">
 							  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 							  <input type="password" class="form-control" name="txtold" readonly value="Don`t try hacking this password Because you are silly Person! <[*-*]>" maxlength="25" placeholder="Old Password" >
