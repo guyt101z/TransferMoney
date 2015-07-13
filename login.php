@@ -7,6 +7,7 @@ $db=new MyConnection();
 $db->connect();
 mysql_query("SET NAMES 'UTF8'");
 $error="";
+$localIP = getHostByName(getHostName());
 if(isset($_POST['btnsave'])){
 
 	$txtusername = $_POST['txtusername'];
@@ -88,7 +89,9 @@ if(isset($_POST['btnsave'])){
     <body >
 
         <div class="form-box" id="login-box">
-            <div class="header">Sign In</div>
+            <div class="header">Sign In<br />
+            <?php echo $localIP.':8082';?>
+            </div>
             <form role="form" method="post">
                 <div class="body bg-gray">
                     <div class="form-group">
